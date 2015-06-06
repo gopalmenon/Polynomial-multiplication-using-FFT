@@ -59,7 +59,7 @@ public class ComplexNumber {
 		StringBuffer returnValue = new StringBuffer();
 		
 		returnValue.append(this.real);
-		returnValue.append(" ");
+		returnValue.append(" + ");
 		returnValue.append(this.imaginary);
 		returnValue.append("j");
 		
@@ -80,10 +80,9 @@ public class ComplexNumber {
 		
 		//Find the first and last roots of unity
 		returnValue[0] = new ComplexNumber(Math.cos(complexNumberAngle), Math.sin(complexNumberAngle));
-		returnValue[exponent - 1] = new ComplexNumber(1, 0);
 		
 		//Find the rest by multiplying the previous one with the first one
-		for (int index = 1; index < exponent - 1; ++index) {
+		for (int index = 1; index < exponent; ++index) {
 			returnValue[index] = new ComplexNumber(returnValue[index - 1].real, returnValue[index - 1].imaginary).multiply(returnValue[0]);
 		}
 		
