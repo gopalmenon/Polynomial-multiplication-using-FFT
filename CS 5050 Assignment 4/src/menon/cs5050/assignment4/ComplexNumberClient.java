@@ -19,6 +19,13 @@ public class ComplexNumberClient {
 		ComplexNumber root = new ComplexNumber(0.7071067811865476, 0.7071067811865475);
 		System.out.print("\nInverse is ");
 		System.out.print(root.getInverseOfRootOfUnity().toString());
+		
+		ComplexNumber c1 = new ComplexNumber(2,3);
+		ComplexNumber c2 = new ComplexNumber(4,-5);
+		
+		System.out.print("\nProduct of " + c1.toString() + " and " + c2.toString() + " is " + c1.multiply(c2).toString());
+		System.out.print("\nSum of " + c1.toString() + " and " + c2.toString() + " is " + c1.add(c2).toString());
+		System.out.print("\nDifference of " + c1.toString() + " and " + c2.toString() + " is " + c1.subtract(c2).toString());
 	}
 	
 }

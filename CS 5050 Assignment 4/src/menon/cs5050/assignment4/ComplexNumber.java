@@ -24,6 +24,16 @@ public class ComplexNumber {
 		return new ComplexNumber(this.real + complexToAdd.real, this.imaginary + complexToAdd.imaginary);
 		
 	}
+	
+	/**
+	 * @param complexToSubtract
+	 * @return a complex number that is the result of subtracting another complex number from this 
+	 */
+	public ComplexNumber subtract(ComplexNumber complexToSubtract) {
+		
+		return new ComplexNumber(this.real - complexToSubtract.real, this.imaginary - complexToSubtract.imaginary);
+		
+	}
 
 	
 	/**
@@ -79,14 +89,23 @@ public class ComplexNumber {
 		double complexNumberAngle = 2* Math.PI / exponent;
 		
 		//Find the first and last roots of unity
-		returnValue[0] = new ComplexNumber(Math.cos(complexNumberAngle), Math.sin(complexNumberAngle));
+		returnValue[0] = new ComplexNumber(1, 0);
+		ComplexNumber increment = new ComplexNumber(Math.cos(complexNumberAngle), Math.sin(complexNumberAngle));
 		
 		//Find the rest by multiplying the previous one with the first one
 		for (int index = 1; index < exponent; ++index) {
-			returnValue[index] = new ComplexNumber(returnValue[index - 1].real, returnValue[index - 1].imaginary).multiply(returnValue[0]);
+			returnValue[index] = new ComplexNumber(returnValue[index - 1].real, returnValue[index - 1].imaginary).multiply(increment);
 		}
 		
 		return returnValue;
 		
+	}
+
+	public double getReal() {
+		return real;
+	}
+
+	public double getImaginary() {
+		return imaginary;
 	}
 }
