@@ -4,6 +4,7 @@ public class ComplexNumber {
 	
 	private double real;
 	private double imaginary;
+	private boolean useSmartMultiplication;
 	
 	/**
 	 * Constructor
@@ -13,6 +14,7 @@ public class ComplexNumber {
 	public ComplexNumber(double real, double imaginary) {
 		this.real = real;
 		this.imaginary = imaginary;
+		this.useSmartMultiplication = true;
 	}
 	
 	/**
@@ -35,13 +37,25 @@ public class ComplexNumber {
 		
 	}
 
+	/**
+	 * @param multiplier
+	 * @return a new complex number that is the result of multiplying this and another complex number 
+	 */
+	public ComplexNumber multiply(ComplexNumber multiplier) {
+		
+		if (this.useSmartMultiplication) {
+			return smartMultiply(multiplier);
+		} else {
+			return naiveMultiply(multiplier);
+		}
+	}
+	
 	
 	/**
 	 * @param multiplier
-	 * @return a new complex number that is the result of multiplying this and another complex number
-	 * using the Karatsuba multiplication algorithm
+	 * @return a new complex number that is the result of multiplying this and another complex number using the Karatsuba multiplication algorithm
 	 */
-	public ComplexNumber multiply(ComplexNumber multiplier) {
+	private ComplexNumber smartMultiply(ComplexNumber multiplier) {
 		
 		double realsProduct = this.real * multiplier.real;
 		double imaginariesProduct = this.imaginary * multiplier.imaginary;
@@ -49,6 +63,16 @@ public class ComplexNumber {
 			
 		return new ComplexNumber(realsProduct - imaginariesProduct, sumProduct - (realsProduct + imaginariesProduct));
 		
+	}
+	
+	/**
+	 * @param multiplier
+	 * @return a new complex number that is the result of multiplying this and another complex number using the naive multiplication method
+	 */
+	private ComplexNumber naiveMultiply(ComplexNumber multiplier) {
+		
+		return new ComplexNumber(this.real * multiplier.real - this.imaginary * multiplier.imaginary, this.real * multiplier.imaginary + this.imaginary * multiplier.real);
+	
 	}
 	
 	/**
@@ -107,5 +131,13 @@ public class ComplexNumber {
 
 	public double getImaginary() {
 		return imaginary;
+	}
+
+	public boolean isUseSmartMultiplication() {
+		return useSmartMultiplication;
+	}
+
+	public void setUseSmartMultiplication(boolean useSmartMultiplication) {
+		this.useSmartMultiplication = useSmartMultiplication;
 	}
 }

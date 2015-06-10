@@ -18,7 +18,7 @@ public class PolynomialClient {
 	public static final String OUTPUT_FILE = "output.txt";
 	public static final String DEBUG_ON = "Y";
 	public static final int START_POLYNOMIAL_ARRAY_SIZE_EXPONENT = 5;
-	public static final int NUMBER_OF_ITERATIONS = 10;
+	public static final int NUMBER_OF_ITERATIONS = 15;
 	
 	/**
 	 * Constructor

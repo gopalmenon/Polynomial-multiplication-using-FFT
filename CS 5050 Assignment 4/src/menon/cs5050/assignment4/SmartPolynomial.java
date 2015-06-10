@@ -174,7 +174,7 @@ public class SmartPolynomial {
 	 * @return the element at the index
 	 * @throws Exception
 	 */
-	private ComplexNumber at(int index) throws Exception {
+	public ComplexNumber at(int index) throws Exception {
 		
 		if (index >= this.coefficients.length) {
 			throw new Exception("Index " + index + " is outside the coefficients for " + this.toString() + ".");
